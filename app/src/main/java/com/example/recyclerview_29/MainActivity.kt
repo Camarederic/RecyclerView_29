@@ -9,6 +9,15 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val adapter = PlantAdapter()
+    private val imageIdList = listOf(
+        R.drawable.plant_1,
+        R.drawable.plant_2,
+        R.drawable.plant_3,
+        R.drawable.plant_4,
+        R.drawable.plant_5,
+        R.drawable.plant_6
+    )
+    private var index = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,8 +27,16 @@ class MainActivity : AppCompatActivity() {
         init()
     }
 
-    private fun init(){
+    private fun init() {
         binding.recyclerView.layoutManager = GridLayoutManager(this@MainActivity, 3)
         binding.recyclerView.adapter = adapter
+        binding.buttonAdd.setOnClickListener {
+            if (index > 5){
+                index = 0
+            }
+            val plant = Plant(imageIdList[index], "Plant $index")
+            adapter.addPlant(plant)
+            index++
+        }
     }
 }
