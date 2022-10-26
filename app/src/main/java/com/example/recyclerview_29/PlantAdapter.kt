@@ -9,7 +9,7 @@ import com.example.recyclerview_29.databinding.PlantItemBinding
 
 class PlantAdapter : RecyclerView.Adapter<PlantAdapter.PlantViewHolder>() {
 
-    val plantList = ArrayList<Plant>()
+    private val plantList = ArrayList<Plant>()
 
     class PlantViewHolder(item: View) : RecyclerView.ViewHolder(item) {
         private val binding = PlantItemBinding.bind(item)
